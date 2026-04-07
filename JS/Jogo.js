@@ -4,6 +4,13 @@ const ctx = canvas.getContext("2d");
 const pacman = document.getElementById("pacman");
 
 
+const musica = new Audio("./Musicas/Fundo.wav");
+musica.loop = true;
+
+document.addEventListener("click", () => {
+    musica.play();
+});
+
 const tamanhoParede = 25;
 const jogador = new Pacman(30, 30, 20, 20, 1.1);
 
@@ -142,6 +149,11 @@ function gameLoop() {
     }
 
     if (vidas <= 0) {
+
+        document.addEventListener("click", () => {
+            musica.stop();
+        });
+
         ctx.font = "50px Arial";
         ctx.fillStyle = "yellow";
         ctx.fillText("Game Over!", 110, 300);
